@@ -8,9 +8,14 @@ public class RPCTest : NetworkBehaviour
     public override void OnNetworkSpawn()
     {   
         // ONLY send an RPC to the server on the client that owns the NetworkObject that owns THIS NetworkBehaviour Instance.
+        // Check if the spawned NetworkBehaviour.NetworkObject is NOT A SERVER and IS THE OWNER of the local player
         if(!IsServer && IsOwner) 
         {
+            // Determined that we are a Client, Send a ServerRpc.
             TestServerRpc(0, NetworkObjectId);
+        } else
+        {
+            TestClientRpc(0, NetworkObjectId);
         }
     }
 
