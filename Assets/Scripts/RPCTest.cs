@@ -15,6 +15,7 @@ public class RPCTest : NetworkBehaviour
             TestServerRpc(0, NetworkObjectId);
         } else
         {
+            // This NetworkBehaviour.NetworkObject is a Server, Send ClientRpc.
             TestClientRpc(0, NetworkObjectId);
         }
     }
@@ -47,6 +48,13 @@ public class RPCTest : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!IsServer && IsOwner)
+        {
+            // Is a Client
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                
+            }
+        }
     }
 }
