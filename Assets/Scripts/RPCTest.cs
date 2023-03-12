@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RPCTest : NetworkBehaviour
 {
+
     public override void OnNetworkSpawn()
     {   
         // ONLY send an RPC to the server on the client that owns the NetworkObject that owns THIS NetworkBehaviour Instance.
@@ -48,12 +49,12 @@ public class RPCTest : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!IsServer && IsOwner)
+        if (IsOwner)
         {
             // Is a Client
             if (Input.GetKeyDown(KeyCode.W))
             {
-                
+               
             }
         }
     }
